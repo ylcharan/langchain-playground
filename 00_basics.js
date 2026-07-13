@@ -10,7 +10,12 @@ const model = new ChatGoogleGenerativeAI({
 });
 const demo = async () => {
   try {
-    const response = await model.invoke("Write a short haiku about the ocean.");
+    const promptTemplate = `Be very careful and do not hallucinate. Answer the following question: {question}`;
+    const prompt = promptTemplate.replace(
+      "{question}",
+      "What is the capital of Andhra Pradesh?",
+    );
+    const response = await model.invoke(prompt);
 
     console.log("AI RESPONSE:", response.content);
   } catch (err) {
