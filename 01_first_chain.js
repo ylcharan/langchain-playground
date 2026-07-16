@@ -18,4 +18,5 @@ const chain = prompt.pipe(model);
 const result = await chain.invoke({
   question: "who is the captain of eng test cricket?",
 });
+
 console.log(result.content);
